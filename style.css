@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  background: url(https://i.pinimg.com/originals/60/6c/ae/606cae71bb98f9079246fe50ed14ef3e.gif) no-repeat center center fixed;
+  background-size: cover;
+  animation: gradientAnimation 10s ease infinite;
+  overflow: hidden; /* optional: keeps cursor area clean */
+  position: relative; /* safe baseline */
+  font-family: 'Jockey One', sans-serif;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- Sparkles ---------- */
+.sparkle {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  /* center the sparkle visually */
+  transform: translate(-50%, -50%) scale(1);
+  background: radial-gradient(circle, #ffffff 30%, rgba(255,255,255,0) 70%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: sparkleFade 0.6s ease-out forwards;
+  filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 10px #ff8bd1);
+  z-index: 9999;
+  mix-blend-mode: screen;
+}
+
+@keyframes sparkleFade {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1.4); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+}
+
+/* ---------- Image + buttons (your original + small fixes) ---------- */
+img {
+  opacity: 0.9;
+  display: block;
+  margin: 0 auto;
+  height: 60vh;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.45),
+              0 0 25px rgba(120, 180, 255, 0.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.3s ease;
+  filter: saturate(1.15) contrast(1.05);
+}
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(255, 105, 180, 0.55), 0 0 35px rgba(120, 180, 255, 0.45);
+  filter: saturate(1.25) contrast(1.1);
+}
+
+/* ---------- BUTTON CONTAINER ---------- */
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* YES BUTTON STYLES */
+.yes-btn {
+  font-family: 'Jockey One', sans-serif;
+  background-color: pink;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.yes-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+/* NO BUTTON (starting style, before it runs away 💀) */
+.no-btn {
+  font-family: 'Jockey One', sans-serif;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  position: relative; /* not absolute anymore */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.no-btn:hover {
+  background-color: #ff4d6d;
+  transform: rotate(6deg);
+}
+
+ 
+
+/* ---------- NAVBAR ---------- */
+.site-nav {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  z-index: 10000;
+  backdrop-filter: blur(6px) saturate(1.05);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border-radius: 999px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  user-select: none;
+}
+
+.site-nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(120,120,255,0.12);
+}
+
+.site-title {
+  font-family: 'Jockey One', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+
+/* ---------- music button ---------- */
+.music-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.15));
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.18s ease;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  position: relative;
+  overflow: visible;
+}
+
+.music-btn:active { transform: translateY(1px) scale(0.995); }
+
+/* music note styling */
+.music-note {
+  display: block;
+  color: #ffd9f3;
+  transition: transform 0.22s ease;
+  transform-origin: center;
+}
+
+/* Equalizer bars (hidden by default) */
+.eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
+  width: 22px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.bar {
+  display: block;
+  width: 4px;
+  background: linear-gradient(180deg, #fff, #ff8bd1);
+  border-radius: 2px;
+  height: 4px;
+  transform-origin: bottom center;
+}
+
+/* animated when playing */
+.music-btn.playing .music-note {
+  animation: dance 900ms ease-in-out infinite;
+}
+
+.music-btn.playing .eq {
+  opacity: 1;
+}
+
+.music-btn.playing .b1 { animation: eqAnim 600ms infinite ease-in-out 0ms; }
+.music-btn.playing .b2 { animation: eqAnim 400ms infinite ease-in-out 80ms; }
+.music-btn.playing .b3 { animation: eqAnim 700ms infinite ease-in-out 160ms; }
+
+/* keyframes */
+@keyframes dance {
+  0% { transform: translateY(0) rotate(0deg) }
+  25% { transform: translateY(-3px) rotate(-8deg) }
+  50% { transform: translateY(0) rotate(0deg) }
+  75% { transform: translateY(-3px) rotate(8deg) }
+  100% { transform: translateY(0) rotate(0deg) }
+}
+
+@keyframes eqAnim {
+  0% { height: 4px; transform: scaleY(1); opacity: 0.8; }
+  50% { height: 14px; transform: scaleY(2); opacity: 1; }
+  100% { height: 4px; transform: scaleY(1); opacity: 0.8; }
+}
+
+/* responsive adjustments */
+@media (max-width: 560px) {
+  .site-nav { padding: 8px; width: calc(100% - 24px); }
+  .site-title { font-size: 16px; }
+}
+
+
+/* ------------ DIALOG BOX -------------- */
+.dialog-box {
+  width: 70%;
+  max-width: 500px;
+  margin: 120px auto 40px auto;
+  padding: 22px 30px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 180, 245, 0.45);
+  border-radius: 16px;
+
+  box-shadow: 
+    0 0 18px rgba(255, 105, 180, 0.5),
+    0 0 30px rgba(120, 180, 255, 0.4);
+
+  backdrop-filter: blur(14px) saturate(1.4);
+
+  text-align: center;
+
+  animation: popIn 0.7s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dialog-box:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 22px rgba(255, 105, 180, 0.7),
+    0 0 35px rgba(120, 180, 255, 0.6);
+}
+
+.dialog-text {
+  font-family: 'Jockey One', sans-serif;
+  font-size: 28px;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+
+
+/* Pop-in animation */
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* Mobile optimization */
+@media (max-width: 720px) {
+  .dialog-box {
+    width: 85%;
+    padding: 18px 20px;
+  }
+
+  .dialog-text {
+    font-size: 22px;
+  }
+}
+
+/* ---------- POPUP OVERLAY ---------- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* ---------- POPUP BOX ---------- */
+.popup-box {
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 180, 245, 0.45);
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 
+    0 0 22px rgba(255,105,180,0.6),
+    0 0 40px rgba(120,180,255,0.4);
+  animation: popScale 0.45s ease forwards;
+}
+
+.popup-text {
+  font-size: 24px;
+  color: #fff;
+  font-family: 'Jockey One', sans-serif;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  margin-bottom: 20px;
+}
+
+/* Close button */
+.popup-btn {
+  padding: 10px 22px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  background: pink;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.popup-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,105,180,0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes popScale {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+

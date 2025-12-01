@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Decimal</title>
+  <link rel="icon" href="./apple.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- NAVBAR -->
+<header class="site-nav">
+  <div class="nav-left">
+    <img class="nav-logo" src="https://1000logos.net/wp-content/uploads/2023/01/One-Piece-Logo-1997.png" alt="site logo" />
+    <span class="site-title">Satyam King</span>
+  </div>
+
+  <div class="nav-right">
+    <!-- Music toggle button -->
+    <button id="musicToggle" class="music-btn" aria-pressed="false" aria-label="Toggle background music">
+      <!-- Music note SVG -->
+      <svg class="music-note" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 17V5l10-2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="7" cy="17" r="2" fill="currentColor"/>
+        <circle cx="17" cy="15" r="2" fill="currentColor"/>
+      </svg>
+
+      <!-- Animated bars (visible when playing) -->
+      <span class="eq">
+        <span class="bar b1"></span>
+        <span class="bar b2"></span>
+        <span class="bar b3"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<!-- Hidden audio (looping) -->
+<audio id="bgMusic" src="One Piece - Bink's Sake (Japanese Version).mp3 " loop preload="auto" crossorigin="anonymous"></audio>
+
+  <!-- Main Content -->
+ <div class="dialog-box">
+  <p class="dialog-text">Do you wanna hangout with me? 🫵🏻🤩</p>
+</div>
+
+
+<div class="btn-container">
+  <button id="yesBtn" class="yes-btn">Yes</button>
+  <button id="noBtn" class="no-btn">No</button>
+</div>
+
+<!-- POPUP MODAL -->
+<div id="lovePopup" class="popup-overlay">
+  <div class="popup-box">
+    <p class="popup-text">⚓ Decimal! 🌊<br>
+You said YES! 💖✨<br>
+Let’s Set Sail after ESE! 🏴‍☠️⛵🔥
+</p>
+
+    <button id="closePopup" class="popup-btn">Okay 💗</button>
+  </div>
+</div>
+
+  <!-- sparkle container optional (not required but okay to have) -->
+  <div class="sparkle-container" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
