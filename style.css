@@ -5,6 +5,7 @@ html, body {
   margin: 0;
   padding: 0;
 
+  cursor: url("luffy_cursor_48.png") 10 10, auto;
   background: url(https://i.pinimg.com/originals/60/6c/ae/606cae71bb98f9079246fe50ed14ef3e.gif) no-repeat center center fixed;
   background-size: cover;
   animation: gradientAnimation 10s ease infinite;
@@ -79,6 +80,7 @@ img:hover {
   cursor: pointer;
   border: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: url("luffy_cursor_48.png"), pointer;
 }
 
 .yes-btn:hover {
